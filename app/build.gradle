@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Versions.compile_sdk
+    buildToolsVersion Versions.build_tool
+    defaultConfig {
+        applicationId "com.ushnesha.daripa.rundemo"
+        minSdkVersion Versions.min_sdk
+        targetSdkVersion Versions.target_sdk
+        versionCode Versions.version_code
+        versionName Versions.version_name
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Deps.kotlin_stdlib
+    implementation Deps.appcompat
+    implementation Deps.core_ktx
+    implementation Deps.constraints_layout
+    testImplementation Deps.junit
+    androidTestImplementation Deps.junit_ext
+    androidTestImplementation Deps.test_espresso
+}
